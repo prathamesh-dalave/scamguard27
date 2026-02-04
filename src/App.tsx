@@ -9,6 +9,7 @@ import FamilyDashboard from "./pages/FamilyDashboard";
 import ThreatMonitor from "./pages/ThreatMonitor";
 import AddMember from "./pages/AddMember";
 import Awareness from "./pages/Awareness";
+import Settings from "./pages/Settings";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -29,6 +30,7 @@ const App = () => (
             <Route path="/threats" element={<ThreatMonitor />} />
             <Route path="/add-member" element={<AddMember />} />
             <Route path="/awareness" element={<Awareness />} />
+            <Route path="/settings" element={<Settings />} />
           </Route>
           
           {/* Catch-all */}
