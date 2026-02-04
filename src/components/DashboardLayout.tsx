@@ -32,7 +32,7 @@ export default function DashboardLayout() {
       {/* Sidebar */}
       <aside
         className={cn(
-          "fixed left-0 top-0 z-40 h-screen bg-sidebar sidebar-glow transition-all duration-300",
+          "relative min-h-screen bg-sidebar sidebar-glow transition-all duration-300 shrink-0",
           collapsed ? "w-[72px]" : "w-64"
         )}
       >
@@ -78,7 +78,7 @@ export default function DashboardLayout() {
             variant="ghost"
             size="icon"
             onClick={() => setCollapsed(!collapsed)}
-            className="absolute -right-3 top-20 h-6 w-6 rounded-full border bg-card shadow-md hover:bg-accent"
+            className="absolute -right-3 top-20 h-6 w-6 rounded-full border bg-card shadow-md hover:bg-accent z-10"
           >
             {collapsed ? (
               <ChevronRight className="h-4 w-4" />
@@ -90,12 +90,7 @@ export default function DashboardLayout() {
       </aside>
 
       {/* Main Content */}
-      <main
-        className={cn(
-          "flex-1 transition-all duration-300",
-          collapsed ? "ml-[72px]" : "ml-64"
-        )}
-      >
+      <main className="flex-1 min-h-screen flex flex-col">
         {/* Top Bar */}
         <header className="sticky top-0 z-30 flex h-16 items-center justify-between border-b bg-card/80 backdrop-blur-sm px-6">
           <div>
