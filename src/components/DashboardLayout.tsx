@@ -21,6 +21,7 @@ const navItems = [
   { to: "/threats", icon: AlertTriangle, label: "Threat Monitor" },
   { to: "/add-member", icon: UserPlus, label: "Add Member" },
   { to: "/awareness", icon: BookOpen, label: "Awareness" },
+  { to: "/settings", icon: Settings, label: "Settings" },
 ];
 
 export default function DashboardLayout() {
@@ -66,10 +67,6 @@ export default function DashboardLayout() {
 
           {/* Footer */}
           <div className="border-t border-sidebar-border p-3 space-y-1">
-            <button className="flex w-full items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-sidebar-muted hover:bg-sidebar-accent hover:text-sidebar-accent-foreground transition-colors">
-              <Settings className="h-5 w-5 shrink-0" />
-              {!collapsed && <span>Settings</span>}
-            </button>
             <button className="flex w-full items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-sidebar-muted hover:bg-sidebar-accent hover:text-sidebar-accent-foreground transition-colors">
               <LogOut className="h-5 w-5 shrink-0" />
               {!collapsed && <span>Logout</span>}
