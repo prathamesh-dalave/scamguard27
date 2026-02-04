@@ -3,7 +3,12 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Index from "./pages/Index";
+import LandingPage from "./pages/LandingPage";
+import DashboardLayout from "./components/DashboardLayout";
+import FamilyDashboard from "./pages/FamilyDashboard";
+import ThreatMonitor from "./pages/ThreatMonitor";
+import AddMember from "./pages/AddMember";
+import Awareness from "./pages/Awareness";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -15,8 +20,18 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Index />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+          {/* Landing Page */}
+          <Route path="/" element={<LandingPage />} />
+          
+          {/* Dashboard Routes with Sidebar Layout */}
+          <Route element={<DashboardLayout />}>
+            <Route path="/dashboard" element={<FamilyDashboard />} />
+            <Route path="/threats" element={<ThreatMonitor />} />
+            <Route path="/add-member" element={<AddMember />} />
+            <Route path="/awareness" element={<Awareness />} />
+          </Route>
+          
+          {/* Catch-all */}
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
