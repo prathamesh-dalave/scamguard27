@@ -14,7 +14,160 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      family_members: {
+        Row: {
+          created_at: string
+          id: string
+          language: string
+          name: string
+          phone: string | null
+          protection_mode: string
+          role: string
+          status: string
+          updated_at: string
+          user_id: string
+          voice_alerts: boolean
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          language?: string
+          name: string
+          phone?: string | null
+          protection_mode?: string
+          role?: string
+          status?: string
+          updated_at?: string
+          user_id: string
+          voice_alerts?: boolean
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          language?: string
+          name?: string
+          phone?: string | null
+          protection_mode?: string
+          role?: string
+          status?: string
+          updated_at?: string
+          user_id?: string
+          voice_alerts?: boolean
+        }
+        Relationships: []
+      }
+      messages: {
+        Row: {
+          action_taken: string | null
+          detected_at: string
+          family_member_id: string | null
+          id: string
+          message: string
+          risk_level: string | null
+          sender: string
+          status: string
+          type: string
+          user_id: string
+        }
+        Insert: {
+          action_taken?: string | null
+          detected_at?: string
+          family_member_id?: string | null
+          id?: string
+          message: string
+          risk_level?: string | null
+          sender: string
+          status?: string
+          type?: string
+          user_id: string
+        }
+        Update: {
+          action_taken?: string | null
+          detected_at?: string
+          family_member_id?: string | null
+          id?: string
+          message?: string
+          risk_level?: string | null
+          sender?: string
+          status?: string
+          type?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "messages_family_member_id_fkey"
+            columns: ["family_member_id"]
+            isOneToOne: false
+            referencedRelation: "family_members"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      trusted_contacts: {
+        Row: {
+          created_at: string
+          family_member_id: string | null
+          id: string
+          name: string
+          phone: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          family_member_id?: string | null
+          id?: string
+          name: string
+          phone: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          family_member_id?: string | null
+          id?: string
+          name?: string
+          phone?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "trusted_contacts_family_member_id_fkey"
+            columns: ["family_member_id"]
+            isOneToOne: false
+            referencedRelation: "family_members"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      user_settings: {
+        Row: {
+          created_at: string
+          default_protection_mode: string
+          id: string
+          language: string
+          updated_at: string
+          user_id: string
+          voice_alerts: boolean
+        }
+        Insert: {
+          created_at?: string
+          default_protection_mode?: string
+          id?: string
+          language?: string
+          updated_at?: string
+          user_id: string
+          voice_alerts?: boolean
+        }
+        Update: {
+          created_at?: string
+          default_protection_mode?: string
+          id?: string
+          language?: string
+          updated_at?: string
+          user_id?: string
+          voice_alerts?: boolean
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
